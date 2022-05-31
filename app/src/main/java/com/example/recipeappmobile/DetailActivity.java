@@ -40,6 +40,8 @@ public class DetailActivity extends AppCompatActivity {
         String title = intent.getStringExtra(EXTRA_TITLE);
         int durationCount = intent.getIntExtra(EXTRA_DURATION, 0);
 
+        getSupportActionBar().setTitle("Go back");
+
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
 
