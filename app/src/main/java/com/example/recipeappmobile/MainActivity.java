@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         mRequestQueue.add(request);
     }
 
+
+
     @Override
     public void onItemClick(int position) {
         Intent detailIntent = new Intent(this, DetailActivity.class);
