@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Jade Apers/AndroidStudioProjects/Recipeappmobile/app/src/main/res/layout/activity_detail.xml" value="0.196875" />
-        <entry key="..\:/Users/Jade Apers/AndroidStudioProjects/Recipeappmobile/app/src/main/res/layout/activity_main.xml" value="0.2006079027355623" />
+        <entry key="..\:/Users/Jade Apers/AndroidStudioProjects/Recipeappmobile/app/src/main/res/layout/activity_detail.xml" value="0.1" />
+        <entry key="..\:/Users/Jade Apers/AndroidStudioProjects/Recipeappmobile/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Jade Apers/AndroidStudioProjects/Recipeappmobile/app/src/main/res/layout/example_item.xml" value="0.25" />
+        <entry key="..\:/Users/Jade Apers/AndroidStudioProjects/Recipeappmobile/app/src/main/res/menu/menu.xml" value="0.2140625" />
       </map>
     </option>
   </component>

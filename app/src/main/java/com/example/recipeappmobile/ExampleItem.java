@@ -22,4 +22,8 @@ public class ExampleItem {
     public int getDuration(){
         return mDuration;
     }
+
+
+
+
 }

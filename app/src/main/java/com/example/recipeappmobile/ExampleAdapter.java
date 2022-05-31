@@ -16,8 +16,17 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.ExampleViewHolder> {
-    private final Context mContext;
-    private final ArrayList<ExampleItem> mExampleList;
+    private  Context mContext;
+    private  ArrayList<ExampleItem> mExampleList;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
 
     public ExampleAdapter(Context context, ArrayList<ExampleItem> exampleList){
         mContext = context;
@@ -53,7 +62,7 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
     }
 
 
-    public static class ExampleViewHolder extends RecyclerView.ViewHolder{
+    public class ExampleViewHolder extends RecyclerView.ViewHolder{
         public ImageView mImageView;
         public TextView mTextViewTitle;
         public TextView mTextViewDuration;
@@ -63,7 +72,18 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
             mImageView = itemView.findViewById(R.id.image_view);
             mTextViewTitle= itemView.findViewById(R.id.text_view_title);
             mTextViewDuration = itemView.findViewById(R.id.text_view_duration);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
-
 }
