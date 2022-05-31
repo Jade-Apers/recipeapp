@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -43,19 +42,18 @@ public class MainActivity extends AppCompatActivity {
     private void downloadAllRecipes(){
         String url = "https://api.edamam.com/api/recipes/v2?type=public&q=pasta&app_id=a19cf056&app_key=%20792806ee4d0f0dfc32e09e98502e34ec%09";
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>(){
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>(){
                     @Override
                     public void onResponse(JSONObject response){
                         try {
                             JSONArray jsonArray = response.getJSONArray("hits");
 
                             for(int i = 0 ; i <jsonArray.length() ; i++){
-                                JSONObject hit = jsonArray.getJSONObject(i);
+                                JSONObject recipe = jsonArray.getJSONObject(i);
 
-                                String title = hit.getString("label");
-                                String imageUrl = hit.getString("image");
-                                int duration = hit.getInt("totalTime");
+                                String title = recipe.getJSONObject("recipe").getString("label");
+                                String imageUrl = recipe.getJSONObject("recipe").getString("image");
+                                int duration = recipe.getJSONObject("recipe").getInt("totalTime");
 
                                 mExampleList.add(new ExampleItem(imageUrl, title, duration));
                             }
@@ -66,13 +64,7 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-                }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-
-        });
+                }, Throwable::printStackTrace);
 
         mRequestQueue.add(request);
 
