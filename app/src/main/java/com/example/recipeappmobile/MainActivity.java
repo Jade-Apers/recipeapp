@@ -2,8 +2,10 @@ package com.example.recipeappmobile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,11 +32,15 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
     private ArrayList<ExampleItem> mExampleList;
     private RequestQueue mRequestQueue;
 
+    private EditText mEdit;
+    private static String DEFAULT_QUERY = "meat";
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        searchView = findViewById(R.id.searchView);
 
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -45,11 +51,26 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         mRecyclerView.setAdapter(mExampleAdapter);
 
         mRequestQueue = Volley.newRequestQueue(this);
-        downloadAllRecipes();
+        downloadAllRecipes(DEFAULT_QUERY);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                downloadAllRecipes(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+               return false;
+            }
+        });
     }
 
-    private void downloadAllRecipes() {
-        String url = "https://api.edamam.com/api/recipes/v2?type=public&q=pasta&app_id=a19cf056&app_key=%20792806ee4d0f0dfc32e09e98502e34ec%09";
+
+    private void downloadAllRecipes(String query) {
+        String url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + query + "&app_id=a19cf056&app_key=%20792806ee4d0f0dfc32e09e98502e34ec%09";
+        mExampleList.clear();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -69,7 +90,8 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                     mExampleAdapter = new ExampleAdapter(MainActivity.this, mExampleList);
                     mRecyclerView.setAdapter(mExampleAdapter);
                     mExampleAdapter.setOnItemClickListener(MainActivity.this);
-                    //mExampleAdapter.notifyDataSetChanged();
+
+                    mExampleAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
                     e.printStackTrace();

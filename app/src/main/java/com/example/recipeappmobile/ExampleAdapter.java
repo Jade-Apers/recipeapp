@@ -19,6 +19,12 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
     private  Context mContext;
     private  ArrayList<ExampleItem> mExampleList;
     private OnItemClickListener mListener;
+    private Object ArrayList;
+
+    public void filterList(ArrayList<ExampleItem> filteredList) {
+            ArrayList = filteredList;
+            notifyDataSetChanged();
+    }
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -66,6 +72,7 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
         public ImageView mImageView;
         public TextView mTextViewTitle;
         public TextView mTextViewDuration;
+
 
         public ExampleViewHolder(View itemView) {
             super(itemView);
