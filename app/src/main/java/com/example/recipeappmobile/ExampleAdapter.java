@@ -1,5 +1,6 @@
 package com.example.recipeappmobile;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -14,8 +16,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.ExampleViewHolder> {
-    private Context mContext;
-    private ArrayList<ExampleItem> mExampleList;
+    private final Context mContext;
+    private final ArrayList<ExampleItem> mExampleList;
 
     public ExampleAdapter(Context context, ArrayList<ExampleItem> exampleList){
         mContext = context;
@@ -23,12 +25,14 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
     }
 
 
+    @NonNull
     @Override
-    public ExampleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.example_item, parent, false);
         return new ExampleViewHolder(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ExampleViewHolder holder, int position) {
         ExampleItem currentItem = mExampleList.get(position);
@@ -49,7 +53,7 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
     }
 
 
-    public class ExampleViewHolder extends RecyclerView.ViewHolder{
+    public static class ExampleViewHolder extends RecyclerView.ViewHolder{
         public ImageView mImageView;
         public TextView mTextViewTitle;
         public TextView mTextViewDuration;
