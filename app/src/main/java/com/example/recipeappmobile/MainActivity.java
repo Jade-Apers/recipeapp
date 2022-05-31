@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
 
         getSupportActionBar().setTitle("Choose your recipe \uD83C\uDF7D");
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {)
+
             @Override
             public boolean onQueryTextSubmit(String query) {
                 downloadAllRecipes(query);
@@ -64,9 +65,12 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
 
             @Override
             public boolean onQueryTextChange(String query) {
-               return false;
+                return false;
             }
         });
+
+
+
     }
 
 
@@ -86,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                         String title = recipe.getJSONObject("recipe").getString("label");
                         String imageUrl = recipe.getJSONObject("recipe").getString("image");
                         int duration = recipe.getJSONObject("recipe").getInt("totalTime");
+                        String ingredients = recipe.getJSONObject("recipe").getString("ingredientLines");
+                        String type = recipe.getJSONObject("recipe").getString("mealType");
 
                         mExampleList.add(new ExampleItem(imageUrl, title, duration));
                     }

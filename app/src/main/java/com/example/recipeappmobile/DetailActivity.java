@@ -55,9 +55,12 @@ public class DetailActivity extends AppCompatActivity {
 
         Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
         textViewTitle.setText(title);
-        textViewDuration.setText("duration:" + durationCount);
 
-
+        if(durationCount == 0){
+            textViewDuration.setText("duration: 25 minutes");
+        } else {
+            textViewDuration.setText("duration: " + durationCount + " minutes");
+        }
 
 
 
