@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Виберіть свій рецепт</string>
+    <string name="searchbar">"Що ти хочеш приготувати сьогодні? "</string>
+    <string name="recipe">"Рецепт "</string>
+    <string name="share">Поділіться з друзями</string>
+    <string name="totalduration">"тривалість: 25 хвилин "</string>
+    <string name="minutes">"хвилин "</string>
+    <string name="duration">"Тривалість "</string>
+    <string name="back">"Повертайся "</string>
+</resources>

@@ -23,7 +23,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="Recipe"
+        android:text="@string/recipe"
         android:textColor="@color/black"
         android:textSize="40sp"
 
@@ -36,7 +36,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="Duration of cooking"
+        android:text="@string/minutes"
         android:textSize="20sp"
         android:layout_alignTop="@+id/image_view_detail"
         android:layout_alignLeft="@+id/image_view_detail"
@@ -52,9 +52,7 @@
         android:layout_marginLeft="10px"
         android:layout_marginRight="10px"
         android:background="#E34949"
-        android:text="Share with your friends"
-
-
+        android:text="@string/share"
         />
 
 

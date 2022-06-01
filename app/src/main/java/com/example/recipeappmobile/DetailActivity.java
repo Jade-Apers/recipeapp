@@ -40,7 +40,7 @@ public class DetailActivity extends AppCompatActivity {
         String title = intent.getStringExtra(EXTRA_TITLE);
         int durationCount = intent.getIntExtra(EXTRA_DURATION, 0);
 
-        getSupportActionBar().setTitle("Go back");
+        getSupportActionBar().setTitle(R.string.back);
 
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
@@ -57,7 +57,7 @@ public class DetailActivity extends AppCompatActivity {
         textViewTitle.setText(title);
 
         if(durationCount == 0){
-            textViewDuration.setText("duration: 25 minutes");
+            textViewDuration.setText(R.string.totalduration);
         } else {
             textViewDuration.setText("duration: " + durationCount + " minutes");
         }

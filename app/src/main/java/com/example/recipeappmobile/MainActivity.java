@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         mRequestQueue = Volley.newRequestQueue(this);
         downloadAllRecipes(DEFAULT_QUERY);
 
-        getSupportActionBar().setTitle("Choose your recipe \uD83C\uDF7D");
+        getSupportActionBar().setTitle(R.string.title);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
