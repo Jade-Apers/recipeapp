@@ -8,5 +8,12 @@
     <string name="totalduration">"тривалість: 25 хвилин "</string>
     <string name="minutes">"хвилин "</string>
     <string name="back">"Повертайся "</string>
+    <string name="prepare">"Як приготувати "</string>
+    <string name="Breakfast">"Сніданок "</string>
+    <string name="Dinner">"Вечеря "</string>
+    <string name="Lunch">Обід</string>
+    <string name="Teatime">"Час чаю "</string>
+    <string name="Snack">"Закуска "</string>
+    <string name="All">всі</string>
 
 </resources>

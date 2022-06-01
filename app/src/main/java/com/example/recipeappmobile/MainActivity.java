@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -31,16 +30,13 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
     public static final String EXTRA_INGREDIENTS = "ingredients";
     public static final String EXTRA_URI = "uri";
 
-
     private RecyclerView mRecyclerView;
     private ExampleAdapter mExampleAdapter;
     private ArrayList<ExampleItem> mExampleList;
     private RequestQueue mRequestQueue;
 
-    private EditText mEdit;
     private static String DEFAULT_QUERY = "e";
     SearchView searchView;
-    Button sortAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                 String query = "teatime";
                 String sortAll = "&mealType=Teatime";
                 downloadAllRecipes(query, sortAll);
-
             }
         });
 
@@ -93,11 +88,8 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                 String query = "meat";
                 String sortAll = "&mealType=Dinner";
                 downloadAllRecipes(query, sortAll);
-
             }
         });
-
-
 
         Button sortSnack = findViewById(R.id.sortSnack);
 
@@ -107,7 +99,6 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                 String query = "snack";
                 String sortAll = "&mealType=Snack";
                 downloadAllRecipes(query, sortAll);
-
             }
         });
 
@@ -130,11 +121,8 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                 String query = "all";
                 String sortAll = "";
                 downloadAllRecipes(query, sortAll);
-
             }
         });
-
-
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -150,13 +138,11 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                 return false;
             }
         });
-
-
     }
 
 
     private void downloadAllRecipes(String query, String query2) {
-        String url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + query + "&app_id=a19cf056&app_key=%20792806ee4d0f0dfc32e09e98502e34ec%09" + query2;
+        String url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + query + "&app_id=a19cf056&app_key=792806ee4d0f0dfc32e09e98502e34ec" + query2;
         mExampleList.clear();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -172,7 +158,6 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                         String imageUrl = recipe.getJSONObject("recipe").getString("image");
                         int duration = recipe.getJSONObject("recipe").getInt("totalTime");
                         String ingredients = recipe.getJSONObject("recipe").getString("ingredientLines");
-                        String type = recipe.getJSONObject("recipe").getString("mealType");
                         String uri = recipe.getJSONObject("recipe").getString("url");
 
                         mExampleList.add(new ExampleItem(imageUrl, title, duration, ingredients, uri));

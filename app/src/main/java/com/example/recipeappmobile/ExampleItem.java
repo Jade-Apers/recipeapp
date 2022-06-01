@@ -18,20 +18,15 @@ public class ExampleItem {
     public String getImageUrl(){
         return mImageUrl;
     }
-
     public String getTitle(){
         return mTitle;
     }
-
     public int getDuration(){
         return mDuration;
     }
-
-
     public String getmIngredients() {
         return mIngredients;
     }
-
     public String getUri() {
         return mUri;
     }

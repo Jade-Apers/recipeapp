@@ -15,7 +15,6 @@
         android:src="@mipmap/ic_launcher"
         android:layout_gravity="center"
         android:foreground="#96222f3e"
-
         />
 
     <TextView
@@ -30,6 +29,7 @@
         android:textStyle="bold"
         android:padding="5dp"
         />
+
 
     <TextView
         android:id="@+id/text_view_duration"

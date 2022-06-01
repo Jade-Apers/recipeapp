@@ -2,9 +2,16 @@
     <string name="title">"Choose your recipe "</string>
     <string name="searchbar">What do you want to cook today?</string>
     <string name="recipe">Recipe</string>
-    <string name="share">How to prepare</string>
+    <string name="share">Let\'s share!</string>
     <string name="totalduration">duration: 25 minutes</string>
     <string name="minutes">minutes</string>
     <string name="duration">duration</string>
     <string name="back">Go back</string>
+    <string name="prepare">How to prepare</string>
+    <string name="Breakfast">Breakfast</string>
+    <string name="Dinner">Dinner</string>
+    <string name="Lunch">Lunch</string>
+    <string name="Teatime">Teatime</string>
+    <string name="Snack">Snack</string>
+    <string name="All">All</string>
 </resources>

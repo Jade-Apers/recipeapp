@@ -59,7 +59,6 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
         holder.mTextViewTitle.setText(title);
         holder.mTextViewDuration.setText("Duration of cooking" + durationCount);
         Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
-
     }
 
     @Override
@@ -79,6 +78,7 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
             mImageView = itemView.findViewById(R.id.image_view);
             mTextViewTitle= itemView.findViewById(R.id.text_view_title);
             mTextViewDuration = itemView.findViewById(R.id.text_view_duration);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

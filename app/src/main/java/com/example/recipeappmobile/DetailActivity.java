@@ -44,8 +44,7 @@ public class DetailActivity extends AppCompatActivity {
         String uri = intent.getStringExtra(EXTRA_URI);
 
         String ingredient = intent.getStringExtra(EXTRA_INGREDIENTS);
-        String[] gesplitst = ingredient.replaceAll("\",", "\n").replaceAll("]", " ").replaceAll("\\[", "").replaceAll("\"", "\n").split(",");
-
+        String[] splicedIngredient = ingredient.replaceAll("\",", "\n").replaceAll("]", " ").replaceAll("\\[", "").replaceAll("\"", "\n").split(",");
 
 
         getSupportActionBar().setTitle(R.string.back);
@@ -61,6 +60,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView textViewDuration = findViewById(R.id.text_view_duration_detail);
 
         Button share = findViewById(R.id.share_button);
+        Button prepare = findViewById(R.id.prepare_button);
 
 
         Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
@@ -69,8 +69,8 @@ public class DetailActivity extends AppCompatActivity {
         TextView textViewIngredients = findViewById(R.id.ingredientlist);
 
 
-        for (int i = 0; i < gesplitst.length; i++) {
-           textViewIngredients.append(gesplitst[i]);
+        for (int i = 0; i < splicedIngredient.length; i++) {
+           textViewIngredients.append(splicedIngredient[i]);
         }
 
 
@@ -80,17 +80,25 @@ public class DetailActivity extends AppCompatActivity {
             textViewDuration.setText("Time to prepare: " + durationCount + " minutes");
         }
 
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT, "Ingredientlist for today");
+                intent.setType("text/plain");
+                startActivity(intent);
+            }
+        });
 
 
-    share.setOnClickListener(new View.OnClickListener(){
+
+        prepare.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View view) {
-         /*   Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType("text/plain");
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.putExtra(Intent.EXTRA_TEXT, imageUrl);
             startActivity(Intent.createChooser(shareIntent, "Share button"));
-
-          */
 
             Uri uri = Uri.parse(intent.getStringExtra(EXTRA_URI)); // missing 'http://' will cause crashed
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);

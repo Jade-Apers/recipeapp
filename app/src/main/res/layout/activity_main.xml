@@ -11,7 +11,7 @@
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="55dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
@@ -34,7 +34,7 @@
             android:layout_marginEnd="5dp"
             android:background="#E34949"
             android:onClick="sortAll"
-            android:text="All"
+            android:text="@string/All"
             android:textColor="#FBF5C8" />
 
         <Button
@@ -45,7 +45,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:background="#E34949"
-            android:text="Breakfast"
+            android:text="@string/Breakfast"
             android:textColor="#FBF5C8" />
 
         <Button
@@ -56,7 +56,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:background="#E34949"
-            android:text="Dinner"
+            android:text="@string/Dinner"
             android:textColor="#FBF5C8" />
     </LinearLayout>
 
@@ -73,7 +73,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
             android:background="#E34949"
-            android:text="Lunch"
+            android:text="@string/Lunch"
             android:textColor="#FBF5C8"
             />
 
@@ -85,9 +85,10 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
             android:background="#E34949"
-            android:text="Teatime"
+            android:text="@string/Teatime"
             android:textColor="#FBF5C8"
             />
+
         <Button
             android:id="@+id/sortSnack"
             android:layout_width="0dp"
@@ -97,13 +98,11 @@
             android:layout_marginEnd="20dp"
             android:layout_marginStart="5dp"
             android:background="#E34949"
-            android:text="Snack"
+            android:text="@string/Snack"
             android:textColor="#FBF5C8"
             />
 
     </LinearLayout>
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
