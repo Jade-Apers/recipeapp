@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
 
         getSupportActionBar().setTitle("Choose your recipe \uD83C\uDF7D");
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {)
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
