@@ -2,10 +2,9 @@
     <string name="title">"Choose your recipe "</string>
     <string name="searchbar">What do you want to cook today?</string>
     <string name="recipe">Recipe</string>
-    <string name="share">Share with your friends</string>
+    <string name="share">How to prepare</string>
     <string name="totalduration">duration: 25 minutes</string>
     <string name="minutes">minutes</string>
     <string name="duration">duration</string>
     <string name="back">Go back</string>
-
 </resources>

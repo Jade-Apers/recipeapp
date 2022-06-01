@@ -2,6 +2,8 @@ package com.example.recipeappmobile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
     public static final String EXTRA_URL = "imageUrl";
     public static final String EXTRA_TITLE = "title";
     public static final String EXTRA_DURATION = "duration";
+    public static final String EXTRA_INGREDIENTS = "ingredients";
+    public static final String EXTRA_URI = "uri";
+
 
     private RecyclerView mRecyclerView;
     private ExampleAdapter mExampleAdapter;
@@ -33,8 +38,9 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
     private RequestQueue mRequestQueue;
 
     private EditText mEdit;
-    private static String DEFAULT_QUERY = "meat";
+    private static String DEFAULT_QUERY = "e";
     SearchView searchView;
+    Button sortAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +55,93 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         mExampleList = new ArrayList<>();
         mExampleAdapter = new ExampleAdapter(MainActivity.this, mExampleList);
         mRecyclerView.setAdapter(mExampleAdapter);
+        mExampleList.clear();
 
         mRequestQueue = Volley.newRequestQueue(this);
-        downloadAllRecipes(DEFAULT_QUERY);
+        downloadAllRecipes(DEFAULT_QUERY, "");
 
         getSupportActionBar().setTitle(R.string.title);
+
+        Button sortLunch = findViewById(R.id.sortLunch);
+
+        sortLunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = "toast";
+                String sortAll = "&mealType=Lunch";
+                downloadAllRecipes(query, sortAll);
+
+            }
+        });
+        Button sortTeatime = findViewById(R.id.sortTeatime);
+
+        sortTeatime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = "teatime";
+                String sortAll = "&mealType=Teatime";
+                downloadAllRecipes(query, sortAll);
+
+            }
+        });
+
+        Button sortDinner = findViewById(R.id.sortDinner);
+
+        sortDinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = "meat";
+                String sortAll = "&mealType=Dinner";
+                downloadAllRecipes(query, sortAll);
+
+            }
+        });
+
+
+
+        Button sortSnack = findViewById(R.id.sortSnack);
+
+        sortSnack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = "snack";
+                String sortAll = "&mealType=Snack";
+                downloadAllRecipes(query, sortAll);
+
+            }
+        });
+
+
+        Button sortBreakfast = findViewById(R.id.sortBreakfast);
+
+        sortBreakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = "breakfast";
+                String sortAll = "&mealType=Breakfast";
+                downloadAllRecipes(query, sortAll);
+
+            }
+        });
+        Button sortAll = findViewById(R.id.sortAll);
+        sortAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = "all";
+                String sortAll = "";
+                downloadAllRecipes(query, sortAll);
+
+            }
+        });
+
+
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                downloadAllRecipes(query);
+                downloadAllRecipes(query, "");
                 return true;
             }
 
@@ -70,12 +152,11 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         });
 
 
-
     }
 
 
-    private void downloadAllRecipes(String query) {
-        String url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + query + "&app_id=a19cf056&app_key=%20792806ee4d0f0dfc32e09e98502e34ec%09";
+    private void downloadAllRecipes(String query, String query2) {
+        String url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + query + "&app_id=a19cf056&app_key=%20792806ee4d0f0dfc32e09e98502e34ec%09" + query2;
         mExampleList.clear();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -92,8 +173,9 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                         int duration = recipe.getJSONObject("recipe").getInt("totalTime");
                         String ingredients = recipe.getJSONObject("recipe").getString("ingredientLines");
                         String type = recipe.getJSONObject("recipe").getString("mealType");
+                        String uri = recipe.getJSONObject("recipe").getString("url");
 
-                        mExampleList.add(new ExampleItem(imageUrl, title, duration));
+                        mExampleList.add(new ExampleItem(imageUrl, title, duration, ingredients, uri));
                     }
                     mExampleAdapter = new ExampleAdapter(MainActivity.this, mExampleList);
                     mRecyclerView.setAdapter(mExampleAdapter);
@@ -116,7 +198,6 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
     }
 
 
-
     @Override
     public void onItemClick(int position) {
         Intent detailIntent = new Intent(this, DetailActivity.class);
@@ -124,6 +205,8 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         detailIntent.putExtra(EXTRA_URL, clickedItem.getImageUrl());
         detailIntent.putExtra(EXTRA_TITLE, clickedItem.getTitle());
         detailIntent.putExtra(EXTRA_DURATION, clickedItem.getDuration());
+        detailIntent.putExtra(EXTRA_INGREDIENTS, clickedItem.getmIngredients());
+        detailIntent.putExtra(EXTRA_URI, clickedItem.getUri());
 
         startActivity(detailIntent);
     }

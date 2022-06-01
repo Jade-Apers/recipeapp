@@ -1,10 +1,13 @@
 package com.example.recipeappmobile;
 
 import static com.example.recipeappmobile.MainActivity.EXTRA_DURATION;
+import static com.example.recipeappmobile.MainActivity.EXTRA_INGREDIENTS;
 import static com.example.recipeappmobile.MainActivity.EXTRA_TITLE;
+import static com.example.recipeappmobile.MainActivity.EXTRA_URI;
 import static com.example.recipeappmobile.MainActivity.EXTRA_URL;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,7 +32,6 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,12 @@ public class DetailActivity extends AppCompatActivity {
         String imageUrl = intent.getStringExtra(EXTRA_URL);
         String title = intent.getStringExtra(EXTRA_TITLE);
         int durationCount = intent.getIntExtra(EXTRA_DURATION, 0);
+        String uri = intent.getStringExtra(EXTRA_URI);
+
+        String ingredient = intent.getStringExtra(EXTRA_INGREDIENTS);
+        String[] gesplitst = ingredient.replaceAll("\",", "\n").replaceAll("]", " ").replaceAll("\\[", "").replaceAll("\"", "\n").split(",");
+
+
 
         getSupportActionBar().setTitle(R.string.back);
 
@@ -51,15 +59,25 @@ public class DetailActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.image_view_detail);
         TextView textViewTitle = findViewById(R.id.text_view_title_detail);
         TextView textViewDuration = findViewById(R.id.text_view_duration_detail);
+
         Button share = findViewById(R.id.share_button);
+
 
         Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
         textViewTitle.setText(title);
 
+        TextView textViewIngredients = findViewById(R.id.ingredientlist);
+
+
+        for (int i = 0; i < gesplitst.length; i++) {
+           textViewIngredients.append(gesplitst[i]);
+        }
+
+
         if(durationCount == 0){
             textViewDuration.setText(R.string.totalduration);
         } else {
-            textViewDuration.setText("duration: " + durationCount + " minutes");
+            textViewDuration.setText("Time to prepare: " + durationCount + " minutes");
         }
 
 
@@ -67,10 +85,16 @@ public class DetailActivity extends AppCompatActivity {
     share.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View view) {
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+         /*   Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_TEXT, imageUrl);
             startActivity(Intent.createChooser(shareIntent, "Share button"));
+
+          */
+
+            Uri uri = Uri.parse(intent.getStringExtra(EXTRA_URI)); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         }
     });
 }

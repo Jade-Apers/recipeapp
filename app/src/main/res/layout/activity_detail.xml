@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,27 +10,30 @@
     android:orientation="vertical"
     tools:context=".DetailActivity">
 
+
     <ImageView
         android:id="@+id/image_view_detail"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher"
-        />
+        android:contentDescription="@string/recipe" />
+
 
     <TextView
         android:id="@+id/text_view_title_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:gravity="center"
         android:text="@string/recipe"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="30sp"
 
         />
+
 
     <TextView
         android:id="@+id/text_view_duration_detail"
@@ -38,22 +44,39 @@
         android:gravity="center"
         android:text="@string/minutes"
         android:textSize="20sp"
-        android:layout_alignTop="@+id/image_view_detail"
-        android:layout_alignLeft="@+id/image_view_detail"
-        android:layout_alignRight="@+id/image_view_detail"
-        android:layout_alignBottom="@+id/image_view_detail"
+        android:paddingBottom="10dip"
+
         />
+
 
     <Button
         android:id="@+id/share_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_marginLeft="10px"
-        android:layout_marginRight="10px"
         android:background="#E34949"
-        android:text="@string/share"
-        />
+
+        android:text="@string/share" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/ingredientlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        android:orientation="horizontal"
+        android:textSize = "20sp" />
+    </ScrollView>
+
+
+
+
+
+
 
 
 </LinearLayout>

@@ -4,11 +4,15 @@ public class ExampleItem {
     private String mImageUrl;
     private String mTitle;
     private int mDuration;
+    private String mIngredients;
+    private String mUri;
 
-    public ExampleItem(String imageUrl, String title, int duration){
+    public ExampleItem(String imageUrl, String title, int duration, String ingredients, String uri){
         mImageUrl = imageUrl;
         mDuration = duration;
         mTitle = title;
+        mIngredients = ingredients;
+        mUri = uri;
     }
 
     public String getImageUrl(){
@@ -24,6 +28,11 @@ public class ExampleItem {
     }
 
 
+    public String getmIngredients() {
+        return mIngredients;
+    }
 
-
+    public String getUri() {
+        return mUri;
+    }
 }
