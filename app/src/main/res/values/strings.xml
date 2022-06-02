@@ -1,5 +1,5 @@
 <resources>
-    <string name="title">"Choose your recipe "</string>
+    <string name="title">"Choose your ingredientlist! "</string>
     <string name="searchbar">What do you want to cook today?</string>
     <string name="recipe">Recipe</string>
     <string name="share">Let\'s share!</string>

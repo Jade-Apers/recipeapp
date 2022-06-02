@@ -24,9 +24,7 @@ public class ExampleItem {
     public int getDuration(){
         return mDuration;
     }
-    public String getmIngredients() {
-        return mIngredients;
-    }
+    public String getIngredients() { return mIngredients; }
     public String getUri() {
         return mUri;
     }

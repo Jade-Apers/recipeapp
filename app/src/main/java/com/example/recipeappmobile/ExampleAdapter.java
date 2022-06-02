@@ -1,30 +1,20 @@
 package com.example.recipeappmobile;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.ExampleViewHolder> {
     private  Context mContext;
     private  ArrayList<ExampleItem> mExampleList;
     private OnItemClickListener mListener;
-    private Object ArrayList;
-
-    public void filterList(ArrayList<ExampleItem> filteredList) {
-            ArrayList = filteredList;
-            notifyDataSetChanged();
-    }
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -39,7 +29,6 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
         mExampleList = exampleList;
     }
 
-
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,7 +36,6 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
         return new ExampleViewHolder(v);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ExampleViewHolder holder, int position) {
         ExampleItem currentItem = mExampleList.get(position);
@@ -80,14 +68,11 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
             mTextViewDuration = itemView.findViewById(R.id.text_view_duration);
 
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            mListener.onItemClick(position);
-                        }
+            itemView.setOnClickListener(v -> {
+                if (mListener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        mListener.onItemClick(position);
                     }
                 }
             });

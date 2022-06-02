@@ -52,25 +52,18 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         mExampleAdapter = new ExampleAdapter(MainActivity.this, mExampleList);
         mRecyclerView.setAdapter(mExampleAdapter);
         mExampleList.clear();
-
         mRequestQueue = Volley.newRequestQueue(this);
-        downloadAllRecipes(DEFAULT_QUERY, "");
-
-        getSupportActionBar().setTitle(R.string.title);
 
         Button sortLunch = findViewById(R.id.sortLunch);
-
         sortLunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String query = "toast";
                 String sortAll = "&mealType=Lunch";
                 downloadAllRecipes(query, sortAll);
-
             }
         });
         Button sortTeatime = findViewById(R.id.sortTeatime);
-
         sortTeatime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         });
 
         Button sortDinner = findViewById(R.id.sortDinner);
-
         sortDinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         });
 
         Button sortSnack = findViewById(R.id.sortSnack);
-
         sortSnack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,16 +93,13 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
             }
         });
 
-
         Button sortBreakfast = findViewById(R.id.sortBreakfast);
-
         sortBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String query = "breakfast";
                 String sortAll = "&mealType=Breakfast";
                 downloadAllRecipes(query, sortAll);
-
             }
         });
         Button sortAll = findViewById(R.id.sortAll);
@@ -124,20 +112,20 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
             }
         });
 
-
+        //search filter when submitting , when text is changing there are no updates
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
             @Override
             public boolean onQueryTextSubmit(String query) {
                 downloadAllRecipes(query, "");
                 return true;
             }
-
             @Override
             public boolean onQueryTextChange(String query) {
                 return false;
             }
         });
+        downloadAllRecipes(DEFAULT_QUERY, "");
+        getSupportActionBar().setTitle(R.string.title);
     }
 
 
@@ -160,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                         String ingredients = recipe.getJSONObject("recipe").getString("ingredientLines");
                         String uri = recipe.getJSONObject("recipe").getString("url");
 
+                        //constructor in exampleItem met getters
                         mExampleList.add(new ExampleItem(imageUrl, title, duration, ingredients, uri));
                     }
                     mExampleAdapter = new ExampleAdapter(MainActivity.this, mExampleList);
@@ -178,7 +167,6 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                 error.printStackTrace();
             }
         });
-
         mRequestQueue.add(request);
     }
 
@@ -190,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         detailIntent.putExtra(EXTRA_URL, clickedItem.getImageUrl());
         detailIntent.putExtra(EXTRA_TITLE, clickedItem.getTitle());
         detailIntent.putExtra(EXTRA_DURATION, clickedItem.getDuration());
-        detailIntent.putExtra(EXTRA_INGREDIENTS, clickedItem.getmIngredients());
+        detailIntent.putExtra(EXTRA_INGREDIENTS, clickedItem.getIngredients());
         detailIntent.putExtra(EXTRA_URI, clickedItem.getUri());
 
         startActivity(detailIntent);

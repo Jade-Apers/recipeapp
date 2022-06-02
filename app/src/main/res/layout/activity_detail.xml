@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DetailActivity"
-    android:background="#E4DDF6"
-
+    android:background="#360CAB"
     >
-
 
     <ImageView
         android:id="@+id/image_view_detail"
@@ -21,20 +17,18 @@
         android:src="@mipmap/ic_launcher"
         android:contentDescription="@string/recipe" />
 
-
     <TextView
         android:id="@+id/text_view_title_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:textStyle="bold"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="@string/recipe"
-        android:textColor="#360CAB"
+        android:textColor="#FFFFFF"
         android:textSize="25sp"
-
         />
 
 
@@ -45,11 +39,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:text="@string/minutes"
         android:textSize="15sp"
         android:paddingBottom="10dip"
-
         />
 
     <LinearLayout
@@ -66,19 +59,23 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:width="100dp"
             android:padding="10dp"
-            android:backgroundTint="#360CAB"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#360CAB"
+            android:textStyle="bold"
             android:text="@string/share"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"/>/>
+            android:layout_marginBottom="10dp"/>
 
         <Button
             android:id="@+id/prepare_button"
-            android:backgroundTint="#360CAB"
             android:padding="10dp"
             android:layout_width="175dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginLeft="20dp"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#360CAB"
+            android:textStyle="bold"
             android:text="@string/prepare"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"/>
@@ -86,9 +83,9 @@
     </LinearLayout>
 
     <ScrollView
-        android:background="#FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#F0E8FC" >
     <TextView
         android:id="@+id/ingredientlist"
         android:layout_width="match_parent"
@@ -97,7 +94,8 @@
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:orientation="horizontal"
-        android:textSize = "20sp"
+        android:textSize = "22sp"
+        android:textColor="@color/black"
         />
     </ScrollView>
 

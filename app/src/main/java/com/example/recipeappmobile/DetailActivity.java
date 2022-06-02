@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends AppCompatActivity {
+
+    //return button to home
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -46,7 +48,6 @@ public class DetailActivity extends AppCompatActivity {
         String ingredient = intent.getStringExtra(EXTRA_INGREDIENTS);
         String[] splicedIngredient = ingredient.replaceAll("\",", "\n").replaceAll("]", " ").replaceAll("\\[", "").replaceAll("\"", "\n").split(",");
 
-
         getSupportActionBar().setTitle(R.string.back);
 
         // calling the action bar
@@ -70,9 +71,8 @@ public class DetailActivity extends AppCompatActivity {
 
 
         for (int i = 0; i < splicedIngredient.length; i++) {
-           textViewIngredients.append(splicedIngredient[i]);
+            textViewIngredients.append(splicedIngredient[i]);
         }
-
 
         if(durationCount == 0){
             textViewDuration.setText(R.string.totalduration);
@@ -91,19 +91,17 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-
-
         prepare.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View view) {
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, imageUrl);
-            startActivity(Intent.createChooser(shareIntent, "Share button"));
+            @Override
+            public void onClick(View view) {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, imageUrl);
+                startActivity(Intent.createChooser(shareIntent, "Share button"));
 
-            Uri uri = Uri.parse(intent.getStringExtra(EXTRA_URI)); // missing 'http://' will cause crashed
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
-        }
-    });
-}
+                Uri uri = Uri.parse(intent.getStringExtra(EXTRA_URI)); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+    }
 }
