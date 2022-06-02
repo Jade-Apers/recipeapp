@@ -32,7 +32,6 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
-            android:background="#E34949"
             android:onClick="sortAll"
             android:text="@string/All"
             android:textColor="#FBF5C8" />
@@ -44,7 +43,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
-            android:background="#E34949"
             android:text="@string/Breakfast"
             android:textColor="#FBF5C8" />
 
@@ -55,7 +53,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
-            android:background="#E34949"
             android:text="@string/Dinner"
             android:textColor="#FBF5C8" />
     </LinearLayout>
@@ -72,7 +69,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
-            android:background="#E34949"
             android:text="@string/Lunch"
             android:textColor="#FBF5C8"
             />
@@ -84,7 +80,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
-            android:background="#E34949"
             android:text="@string/Teatime"
             android:textColor="#FBF5C8"
             />
@@ -97,7 +92,6 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="5dp"
-            android:background="#E34949"
             android:text="@string/Snack"
             android:textColor="#FBF5C8"
             />

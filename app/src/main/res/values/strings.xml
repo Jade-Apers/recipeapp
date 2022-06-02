@@ -15,4 +15,5 @@
     <string name="Snack">Snack</string>
     <string name="All">All</string>
     <string name="Translate">Click here to translate</string>
+    <string name="Speaker">Click here to listen to the ingredients 🔊</string>
 </resources>

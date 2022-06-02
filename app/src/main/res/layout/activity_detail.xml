@@ -17,6 +17,7 @@
         android:src="@mipmap/ic_launcher"
         android:contentDescription="@string/recipe" />
 
+
     <TextView
         android:id="@+id/text_view_title_detail"
         android:layout_width="match_parent"
@@ -45,12 +46,15 @@
         android:paddingBottom="10dip"
         />
 
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
         >
+
 
         <Button
             android:id="@+id/share_button"
@@ -79,8 +83,17 @@
             android:text="@string/prepare"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"/>
-
     </LinearLayout>
+    <Button
+        android:id="@+id/translate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:backgroundTint="#C9A3FF"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:text="@string/Speaker"
+        />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -97,6 +110,11 @@
             android:textSize = "22sp"
             android:textColor="@color/black"
             />
+
     </ScrollView>
+
+
+
+
 
 </LinearLayout>

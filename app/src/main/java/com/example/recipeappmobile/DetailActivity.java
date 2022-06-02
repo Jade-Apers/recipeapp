@@ -6,14 +6,17 @@ import static com.example.recipeappmobile.MainActivity.EXTRA_TITLE;
 import static com.example.recipeappmobile.MainActivity.EXTRA_URI;
 import static com.example.recipeappmobile.MainActivity.EXTRA_URL;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -21,7 +24,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.Locale;
+
 public class DetailActivity extends AppCompatActivity {
+
+    Button button;
+    TextView speakText;
+    TextToSpeech textToSpeech;
 
     //return button to home
     @Override
@@ -34,10 +43,37 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        button = findViewById(R.id.translate);
+        speakText = findViewById(R.id.ingredientlist);
+
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int lang = textToSpeech.setLanguage(Locale.US);
+
+                    if (lang == textToSpeech.LANG_MISSING_DATA || lang == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Toast.makeText(DetailActivity.this, "Language is not supported", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(DetailActivity.this, "Language Supported", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String data = speakText.getText().toString();
+                textToSpeech.speak(data, textToSpeech.QUEUE_FLUSH, null);
+            }
+        });
 
         Intent intent = getIntent();
         String imageUrl = intent.getStringExtra(EXTRA_URL);
