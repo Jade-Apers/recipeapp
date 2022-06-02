@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         setContentView(R.layout.activity_main);
         searchView = findViewById(R.id.searchView);
 
+        //recycler view klaarzetten die we kunnen opvullen
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

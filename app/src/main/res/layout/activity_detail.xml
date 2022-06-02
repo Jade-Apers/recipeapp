@@ -86,17 +86,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F0E8FC" >
-    <TextView
-        android:id="@+id/ingredientlist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textAlignment="center"
-        android:orientation="horizontal"
-        android:textSize = "22sp"
-        android:textColor="@color/black"
-        />
+        <TextView
+            android:id="@+id/ingredientlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAlignment="center"
+            android:orientation="horizontal"
+            android:textSize = "22sp"
+            android:textColor="@color/black"
+            />
     </ScrollView>
 
 </LinearLayout>

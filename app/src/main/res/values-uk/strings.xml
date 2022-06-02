@@ -15,5 +15,6 @@
     <string name="Teatime">"Час чаю "</string>
     <string name="Snack">"Закуска "</string>
     <string name="All">всі</string>
+    <string name="Translate">"Перекладіть список інгредієнтів "</string>
 
 </resources>
