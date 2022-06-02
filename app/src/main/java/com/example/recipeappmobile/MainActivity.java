@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
     private ArrayList<ExampleItem> mExampleList;
     private RequestQueue mRequestQueue;
 
-    private static String DEFAULT_QUERY = "e";
+    private static String DEFAULT_QUERY = "p";
     SearchView searchView;
 
     @Override
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
 
 
     private void downloadAllRecipes(String query, String query2) {
-        String url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + query + "&app_id=a19cf056&app_key=792806ee4d0f0dfc32e09e98502e34ec" + query2;
+        String url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + query + "&app_id=36b33269&app_key=8410530085e0781b2a3a5ffe2fbee10c" + query2;
         mExampleList.clear();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
