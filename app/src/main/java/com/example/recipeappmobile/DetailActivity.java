@@ -49,9 +49,9 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        //translate function
         button = findViewById(R.id.translate);
         speakText = findViewById(R.id.ingredientlist);
-
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -75,6 +75,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        //new intent
         Intent intent = getIntent();
         String imageUrl = intent.getStringExtra(EXTRA_URL);
         String title = intent.getStringExtra(EXTRA_TITLE);
@@ -84,9 +85,8 @@ public class DetailActivity extends AppCompatActivity {
         String ingredient = intent.getStringExtra(EXTRA_INGREDIENTS);
         String[] splicedIngredient = ingredient.replaceAll("\",", "\n").replaceAll("]", " ").replaceAll("\\[", "").replaceAll("\"", "\n").split(",");
 
-        getSupportActionBar().setTitle(R.string.back);
-
         // calling the action bar
+        getSupportActionBar().setTitle(R.string.back);
         ActionBar actionBar = getSupportActionBar();
 
         // showing the back button in action bar
@@ -95,22 +95,18 @@ public class DetailActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.image_view_detail);
         TextView textViewTitle = findViewById(R.id.text_view_title_detail);
         TextView textViewDuration = findViewById(R.id.text_view_duration_detail);
-
         Button share = findViewById(R.id.share_button);
         Button prepare = findViewById(R.id.prepare_button);
 
-
         Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
         textViewTitle.setText(title);
-
         TextView textViewIngredients = findViewById(R.id.ingredientlist);
-
 
         for (int i = 0; i < splicedIngredient.length; i++) {
             textViewIngredients.append(splicedIngredient[i]);
         }
 
-        if(durationCount == 0){
+        if (durationCount == 0) {
             textViewDuration.setText(R.string.totalduration);
         } else {
             textViewDuration.setText("Time to prepare: " + durationCount + " minutes");
@@ -127,7 +123,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        prepare.setOnClickListener(new View.OnClickListener(){
+        prepare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);

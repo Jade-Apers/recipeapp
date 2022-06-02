@@ -7,7 +7,7 @@ public class ExampleItem {
     private String mIngredients;
     private String mUri;
 
-    public ExampleItem(String imageUrl, String title, int duration, String ingredients, String uri){
+    public ExampleItem(String imageUrl, String title, int duration, String ingredients, String uri) {
         mImageUrl = imageUrl;
         mDuration = duration;
         mTitle = title;
@@ -15,16 +15,22 @@ public class ExampleItem {
         mUri = uri;
     }
 
-    public String getImageUrl(){
+    public String getImageUrl() {
         return mImageUrl;
     }
-    public String getTitle(){
+
+    public String getTitle() {
         return mTitle;
     }
-    public int getDuration(){
+
+    public int getDuration() {
         return mDuration;
     }
-    public String getIngredients() { return mIngredients; }
+
+    public String getIngredients() {
+        return mIngredients;
+    }
+
     public String getUri() {
         return mUri;
     }

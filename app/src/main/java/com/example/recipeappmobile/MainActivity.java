@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         searchView = findViewById(R.id.searchView);
 
         //recycler view klaarzetten die we kunnen opvullen
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         mExampleList.clear();
         mRequestQueue = Volley.newRequestQueue(this);
 
+        //all buttons to filter items of list
         Button sortLunch = findViewById(R.id.sortLunch);
         sortLunch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                 downloadAllRecipes(query, sortAll);
             }
         });
+
         Button sortTeatime = findViewById(R.id.sortTeatime);
         sortTeatime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                 downloadAllRecipes(query, sortAll);
             }
         });
+
         Button sortAll = findViewById(R.id.sortAll);
         sortAll.setOnClickListener(new View.OnClickListener() {
             @Override

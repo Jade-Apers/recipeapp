@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="#360CAB"
-    >
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -27,11 +26,11 @@
         <Button
             android:id="@+id/sortAll"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
+            android:layout_weight="1"
             android:onClick="sortAll"
             android:text="@string/All"
             android:textColor="#FBF5C8" />
@@ -39,20 +38,20 @@
         <Button
             android:id="@+id/sortBreakfast"
             android:layout_width="0dp"
-            android:layout_weight="2"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
+            android:layout_weight="2"
             android:text="@string/Breakfast"
             android:textColor="#FBF5C8" />
 
         <Button
             android:id="@+id/sortDinner"
             android:layout_width="0dp"
-            android:layout_weight="2"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
+            android:layout_weight="2"
             android:text="@string/Dinner"
             android:textColor="#FBF5C8" />
     </LinearLayout>
@@ -65,36 +64,33 @@
         <Button
             android:id="@+id/sortLunch"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
             android:text="@string/Lunch"
-            android:textColor="#FBF5C8"
-            />
+            android:textColor="#FBF5C8" />
 
         <Button
             android:id="@+id/sortTeatime"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
             android:text="@string/Teatime"
-            android:textColor="#FBF5C8"
-            />
+            android:textColor="#FBF5C8" />
 
         <Button
             android:id="@+id/sortSnack"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginStart="5dp"
+            android:layout_weight="1"
             android:text="@string/Snack"
-            android:textColor="#FBF5C8"
-            />
+            android:textColor="#FBF5C8" />
 
     </LinearLayout>
 

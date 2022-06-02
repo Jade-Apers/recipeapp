@@ -6,14 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
-public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.ExampleViewHolder> {
-    private  Context mContext;
-    private  ArrayList<ExampleItem> mExampleList;
+public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder> {
+    private Context mContext;
+    private ArrayList<ExampleItem> mExampleList;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
@@ -24,7 +27,7 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
         mListener = listener;
     }
 
-    public ExampleAdapter(Context context, ArrayList<ExampleItem> exampleList){
+    public ExampleAdapter(Context context, ArrayList<ExampleItem> exampleList) {
         mContext = context;
         mExampleList = exampleList;
     }
@@ -55,18 +58,16 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
     }
 
 
-    public class ExampleViewHolder extends RecyclerView.ViewHolder{
+    public class ExampleViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
         public TextView mTextViewTitle;
         public TextView mTextViewDuration;
 
-
         public ExampleViewHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.image_view);
-            mTextViewTitle= itemView.findViewById(R.id.text_view_title);
+            mTextViewTitle = itemView.findViewById(R.id.text_view_title);
             mTextViewDuration = itemView.findViewById(R.id.text_view_duration);
-
 
             itemView.setOnClickListener(v -> {
                 if (mListener != null) {
