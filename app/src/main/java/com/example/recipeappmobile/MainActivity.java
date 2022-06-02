@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
     private ArrayList<ExampleItem> mExampleList;
     private RequestQueue mRequestQueue;
 
-    private static String DEFAULT_QUERY = "p";
+    private static String DEFAULT_QUERY = "e";
     SearchView searchView;
 
     @Override
